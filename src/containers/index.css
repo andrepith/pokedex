@@ -1,0 +1,18 @@
+.wrapper-card {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 0.5rem;
+}
+
+.poke-list {
+  background: #f4f4f4;
+  border-radius: 8px;
+  padding: 10px 20px;
+}
+
+.button-see-more {
+  margin-top: 0.5rem;
+  padding: 4px 24px;
+  border: solid 1px #f4f4f4;
+  border-radius: 0.25rem;
+}

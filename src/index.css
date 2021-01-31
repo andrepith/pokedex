@@ -1,0 +1,124 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Nunito", sans-serif;
+  font-size: 1rem;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.main {
+  max-width: 48rem;
+  min-height: 100vh;
+  margin: auto;
+  padding: 0.5rem;
+  text-align: center;
+  background: radial-gradient(#ffbf0b, #89c893);
+}
+
+.main-title {
+  margin-bottom: 1.5rem;
+}
+
+a {
+  text-decoration: none;
+  color: #555;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* pokemon color */
+.bug {
+  background-color: #c6d16e;
+}
+
+.dark {
+  background-color: #a29288;
+}
+
+.dragon {
+  background-color: #a27dfa;
+}
+
+.electric {
+  background-color: #fae078;
+}
+
+.fairy {
+  background-color: #f4bdc9;
+}
+
+.fighting {
+  background-color: #d67873;
+}
+
+.fire {
+  background-color: #f5ac78;
+}
+
+.flying {
+  background-color: #c6b7f5;
+}
+
+.ghost {
+  background-color: #a292bc;
+}
+
+.grass {
+  background-color: #a7db8d;
+}
+
+.ground {
+  background-color: #ebd69d;
+}
+
+.ice {
+  background-color: #bce6e6;
+}
+
+.normal {
+  background-color: #c6c6a7;
+}
+
+.poison {
+  background-color: #c183c1;
+}
+
+.psychic {
+  background-color: #fa92b2;
+}
+
+.rock {
+  background-color: #d1c17d;
+}
+
+.steel {
+  background-color: #d1d1e0;
+}
+
+.water {
+  background-color: #9db7f5;
+}
+
+.unknown {
+  background-color: #9dc1b7;
+}
