@@ -1,0 +1,46 @@
+.detail-page {
+  min-height: 100vh;
+  color: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+}
+
+.about {
+  background-color: #f4f4f4;
+  color: rgb(41, 40, 40);
+  flex: 1;
+  border-radius: 40px 40px 0 0;
+  padding: 40px;
+}
+
+.wrapper-pills {
+  margin-top: 10px;
+  display: flex;
+}
+
+.pills {
+  padding: 8px 10px;
+  filter: brightness(85%);
+  border-radius: 12px;
+  color: white;
+  margin-right: 8px;
+}
+
+.id {
+  flex: 1;
+  position: relative;
+}
+
+.id div {
+  position: absolute;
+  top: 50%;
+  right: 0;
+}
+
+.table-about {
+  width: 100%;
+}
+
+.table-about tr {
+  height: 25px;
+}
