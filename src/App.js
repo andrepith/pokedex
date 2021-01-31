@@ -6,7 +6,7 @@ import "./index.css";
 
 function App() {
   const client = new ApolloClient({
-    uri: "https://graphql-pokeapi.vercel.app/api/graphql",
+    uri: "https://graphql-pokemon2.vercel.app/",
   });
   return (
     <ApolloProvider client={client}>

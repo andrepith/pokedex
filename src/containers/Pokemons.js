@@ -15,14 +15,16 @@ const customStyles = {
 
 const PokemonsContainer = () => {
   const [list, setList] = useState([]);
-  const [limit, setLimit] = useState(20);
+  const [first, setFirst] = useState(20);
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [currentID, setID] = useState("");
   const [currentName, setName] = useState("");
   const { data, loading, error } = useQuery(GET_POKEMONS, {
-    variables: { limit, offset: 0 },
+    variables: { first },
   });
 
-  const openModal = (name) => {
+  const openModal = (id, name) => {
+    setID(id);
     setName(name);
     setIsOpen(true);
   };
@@ -30,7 +32,7 @@ const PokemonsContainer = () => {
 
   useEffect(() => {
     if (loading === false && data) {
-      setList(data.pokemons.results);
+      setList(data.pokemons);
     }
   }, [data, loading]);
 
@@ -50,10 +52,14 @@ const PokemonsContainer = () => {
                 <div
                   className="poke-list"
                   key={key}
-                  onClick={() => openModal(item.name)}
+                  onClick={() => openModal(item.id, item.name)}
                 >
                   <div>
-                    <img alt={item.name + " image"} src={item.image} />
+                    <img
+                      width={96}
+                      alt={item.name + " image"}
+                      src={item.image}
+                    />
                   </div>
                   <div>{startCase(item.name)}</div>
                 </div>
@@ -63,7 +69,7 @@ const PokemonsContainer = () => {
           {!!list.length && (
             <button
               className="button-see-more"
-              onClick={() => setLimit(limit + 20)}
+              onClick={() => setFirst(first + 20)}
             >
               See More
             </button>
@@ -74,7 +80,7 @@ const PokemonsContainer = () => {
           onRequestClose={closeModal}
           style={customStyles}
         >
-          <PokemonDetail name={currentName} />
+          <PokemonDetail id={currentID} name={currentName} />
         </Modal>
       </>
     );

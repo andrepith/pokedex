@@ -16,6 +16,7 @@
 .wrapper-pills {
   margin-top: 10px;
   display: flex;
+  overflow: auto;
 }
 
 .pills {

@@ -5,36 +5,42 @@ import { GET_DETAIL } from "../graphql/get-pokemons";
 
 import "./index.css";
 
-const Pokemon = ({ name }) => {
+const imageUrl =
+  "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/";
+
+const Pokemon = ({ id, name }) => {
   const { data, loading } = useQuery(GET_DETAIL, {
-    variables: { name },
+    variables: { id, name },
   });
 
   if (loading) {
     return <div></div>;
   }
   return (
-    <div className={data.pokemon.types[0].type.name + " detail-page"}>
+    <div className={data.pokemon.types[0].toLowerCase() + " detail-page"}>
       <div style={{ padding: "40px" }} className="d-flex">
         <div>
-          <h1>{startCase(name)}</h1>
+          <h1>{startCase(data.pokemon.name)}</h1>
           <div className="wrapper-pills">
             {data.pokemon.types.map((item, key) => (
-              <span className={item.type.name + " pills text-center"} key={key}>
-                {capitalize(item.type.name)}
+              <span
+                className={item.toLowerCase() + " pills text-center"}
+                key={key}
+              >
+                {capitalize(item)}
               </span>
             ))}
           </div>
         </div>
         <div className="id">
-          <div>#{padStart(data.pokemon.id, 3, 0)}</div>
+          <div>#{padStart(data.pokemon.number, 3, 0)}</div>
         </div>
       </div>
       <div className="text-center">
         <img
-          alt={"pokemon-" + data.pokemon.id}
-          src={data.pokemon.sprites.front_default}
-          height="300px"
+          alt={"pokemon-" + data.pokemon.number}
+          src={imageUrl + Number(data.pokemon.number) + ".png"}
+          width="300px"
         />
       </div>
       <div className="about">
@@ -42,16 +48,20 @@ const Pokemon = ({ name }) => {
         <table className="table-about">
           <tbody>
             <tr>
-              <td>Species</td>
-              <td>{data.pokemon.species.name}</td>
+              <td>Classification</td>
+              <td>{data.pokemon.classification}</td>
             </tr>
             <tr>
               <td>Height</td>
-              <td>{data.pokemon.height} cm</td>
+              <td>
+                {data.pokemon.height.minimum} - {data.pokemon.height.maximum}
+              </td>
             </tr>
             <tr>
               <td>Weight</td>
-              <td>{data.pokemon.weight} kg</td>
+              <td>
+                {data.pokemon.weight.minimum} - {data.pokemon.weight.maximum}
+              </td>
             </tr>
             <tr>
               <td>Abilities</td>
@@ -59,14 +69,18 @@ const Pokemon = ({ name }) => {
           </tbody>
         </table>
         <div className="wrapper-pills">
-          {data.pokemon.abilities.map((item, key) => (
-            <span
-              className={data.pokemon.types[0].type.name + " pills text-center"}
-              key={key}
-            >
-              {capitalize(item.ability.name)}
-            </span>
-          ))}
+          {[...data.pokemon.attacks.fast, ...data.pokemon.attacks.special].map(
+            (item, key) => (
+              <span
+                className={
+                  data.pokemon.types[0].toLowerCase() + " pills text-center"
+                }
+                key={key}
+              >
+                {capitalize(item.name)}
+              </span>
+            )
+          )}
         </div>
       </div>
     </div>

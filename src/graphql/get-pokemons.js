@@ -1,39 +1,43 @@
 import gql from "graphql-tag";
 
 export const GET_POKEMONS = gql`
-  query pokemons($limit: Int, $offset: Int) {
-    pokemons(limit: $limit, offset: $offset) {
-      results {
-        name
-        image
-        id
-      }
+  query pokemons($first: Int!) {
+    pokemons(first: $first) {
+      name
+      image
+      id
     }
   }
 `;
 
 export const GET_DETAIL = gql`
-  query pokemon($name: String!) {
-    pokemon(name: $name) {
+  query pokemon($id: String, $name: String) {
+    pokemon(id: $id, name: $name) {
       id
+      number
       name
-      abilities {
-        ability {
+      classification
+      height {
+        minimum
+        maximum
+      }
+      weight {
+        minimum
+        maximum
+      }
+      types
+      image
+      attacks {
+        fast {
           name
+          type
+          damage
         }
-      }
-      species {
-        name
-      }
-      height
-      weight
-      types {
-        type {
+        special {
           name
+          type
+          damage
         }
-      }
-      sprites {
-        front_default
       }
     }
   }

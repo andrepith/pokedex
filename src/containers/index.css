@@ -5,14 +5,20 @@
 }
 
 .poke-list {
-  background: #f4f4f4;
+  background: #fff;
   border-radius: 8px;
   padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.poke-list div {
+  flex: 1;
 }
 
 .button-see-more {
   margin-top: 0.5rem;
   padding: 4px 24px;
-  border: solid 1px #f4f4f4;
+  border: solid 1px #fff;
   border-radius: 0.25rem;
 }
