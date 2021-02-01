@@ -17,6 +17,8 @@ export const GET_DETAIL = gql`
       number
       name
       classification
+      maxHP
+      maxCP
       height {
         minimum
         maximum

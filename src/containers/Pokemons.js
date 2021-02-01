@@ -4,6 +4,7 @@ import { startCase } from "lodash";
 import Modal from "react-modal";
 import { GET_POKEMONS } from "../graphql/get-pokemons";
 import PokemonDetail from "../components/PokemonDetail";
+import PokemonCompare from "../components/PokemonCompare";
 
 import "./index.css";
 
@@ -19,16 +20,28 @@ const PokemonsContainer = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [currentID, setID] = useState("");
   const [currentName, setName] = useState("");
-  const { data, loading, error } = useQuery(GET_POKEMONS, {
+  const [isCompare, setCompare] = useState(false);
+  const [compareID, setCompareID] = useState("");
+  const [compareName, setCompareName] = useState("");
+  const { data, loading } = useQuery(GET_POKEMONS, {
     variables: { first },
   });
 
   const openModal = (id, name) => {
-    setID(id);
-    setName(name);
+    if (isCompare) {
+      setCompareID(id);
+      setCompareName(name);
+    } else {
+      setID(id);
+      setName(name);
+    }
     setIsOpen(true);
   };
   const closeModal = () => setIsOpen(false);
+  const comparePokemon = () => {
+    setCompare(true);
+    setIsOpen(false);
+  };
 
   useEffect(() => {
     if (loading === false && data) {
@@ -46,6 +59,15 @@ const PokemonsContainer = () => {
               alt="Pokemon Logo"
             />
           </h1>
+          {isCompare && (
+            <div
+              onClick={() => setCompare(false)}
+              style={{ marginBottom: "16px" }}
+            >
+              <div>Compare {startCase(currentName)} with:</div>
+              <button className="button-see-more">Stop Comparing</button>
+            </div>
+          )}
           <div className="wrapper-card">
             {list.map((item, key) => {
               return (
@@ -80,7 +102,23 @@ const PokemonsContainer = () => {
           onRequestClose={closeModal}
           style={customStyles}
         >
-          <PokemonDetail id={currentID} name={currentName} />
+          {isCompare ? (
+            <PokemonCompare
+              currentID={currentID}
+              currentName={currentName}
+              compareID={compareID}
+              compareName={compareName}
+            />
+          ) : (
+            <>
+              <PokemonDetail id={currentID} name={currentName} />
+              <div style={{ padding: "16px 40px" }}>
+                <button className="button-see-more" onClick={comparePokemon}>
+                  Compare This Pokemon
+                </button>
+              </div>
+            </>
+          )}
         </Modal>
       </>
     );

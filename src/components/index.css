@@ -56,3 +56,13 @@
 .pokemon-moves > * {
   margin-bottom: 8px;
 }
+
+.pokemon-showdown {
+  flex: 1 1 0%;
+  display: flex;
+  flex-direction: column;
+}
+
+.attributes {
+  margin-bottom: 16px;
+}
