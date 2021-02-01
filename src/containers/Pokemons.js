@@ -112,7 +112,14 @@ const PokemonsContainer = () => {
           ) : (
             <>
               <PokemonDetail id={currentID} name={currentName} />
-              <div style={{ padding: "16px 40px" }}>
+              <div
+                style={{
+                  padding: "0 40px 16px",
+                  backgroundColor: "#f4f4f4",
+                  marginTop: "-16px",
+                }}
+                className="text-center"
+              >
                 <button className="button-see-more" onClick={comparePokemon}>
                   Compare This Pokemon
                 </button>
