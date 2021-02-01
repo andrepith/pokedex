@@ -64,9 +64,7 @@ const Pokemon = ({ id, name }) => {
             </tr>
             <tr>
               <td>Max HP</td>
-              <td>
-                {data.pokemon.weight.minimum} - {data.pokemon.weight.maximum}
-              </td>
+              <td>{data.pokemon.maxHP}</td>
             </tr>
             <tr>
               <td>Abilities</td>
