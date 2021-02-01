@@ -12,8 +12,12 @@
   flex-direction: column;
 }
 
-.poke-list div {
-  flex: 1;
+.poke-list__image {
+  margin: auto;
+}
+
+.poke-list__name {
+  margin-top: auto;
 }
 
 .button-see-more {

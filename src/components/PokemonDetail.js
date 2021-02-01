@@ -44,7 +44,6 @@ const Pokemon = ({ id, name }) => {
         />
       </div>
       <div className="about">
-        <h2 style={{ marginBottom: "16px" }}>Details</h2>
         <table className="table-about">
           <tbody>
             <tr>
@@ -64,21 +63,32 @@ const Pokemon = ({ id, name }) => {
               </td>
             </tr>
             <tr>
+              <td>Max HP</td>
+              <td>
+                {data.pokemon.weight.minimum} - {data.pokemon.weight.maximum}
+              </td>
+            </tr>
+            <tr>
               <td>Abilities</td>
             </tr>
           </tbody>
         </table>
-        <div className="wrapper-pills">
+        <div>
           {[...data.pokemon.attacks.fast, ...data.pokemon.attacks.special].map(
             (item, key) => (
-              <span
-                className={
-                  data.pokemon.types[0].toLowerCase() + " pills text-center"
-                }
-                key={key}
-              >
-                {capitalize(item.name)}
-              </span>
+              <div className="pokemon-moves" key={key}>
+                <div className="d-flex">
+                  <span
+                    className={
+                      item.type.toLowerCase() + " pills d-inline-block"
+                    }
+                  >
+                    {item.type}
+                  </span>
+                  <div className="my-auto">{capitalize(item.name)}</div>
+                </div>
+                <div>Attack Power: {item.damage}</div>
+              </div>
             )
           )}
         </div>

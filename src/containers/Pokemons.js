@@ -54,14 +54,14 @@ const PokemonsContainer = () => {
                   key={key}
                   onClick={() => openModal(item.id, item.name)}
                 >
-                  <div>
+                  <div className="poke-list__image">
                     <img
                       width={96}
                       alt={item.name + " image"}
                       src={item.image}
                     />
                   </div>
-                  <div>{startCase(item.name)}</div>
+                  <div className="poke-list__name">{startCase(item.name)}</div>
                 </div>
               );
             })}

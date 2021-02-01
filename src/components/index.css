@@ -45,3 +45,14 @@
 .table-about tr {
   height: 25px;
 }
+
+.pokemon-moves {
+  margin-bottom: 8px;
+  border-radius: 8px;
+  padding: 0.5rem;
+  background-color: #fff;
+}
+
+.pokemon-moves > * {
+  margin-bottom: 8px;
+}

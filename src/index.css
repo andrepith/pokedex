@@ -42,8 +42,17 @@ a {
   display: flex;
 }
 
+.d-inline-block {
+  display: inline-block;
+}
+
 .text-center {
   text-align: center;
+}
+
+.my-auto {
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 /* pokemon color */
