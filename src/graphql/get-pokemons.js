@@ -19,6 +19,8 @@ export const GET_DETAIL = gql`
       classification
       maxHP
       maxCP
+      weaknesses
+      resistant
       height {
         minimum
         maximum
